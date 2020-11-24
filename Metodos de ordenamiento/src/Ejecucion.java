@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 class Ordenador{
 	
@@ -20,9 +21,21 @@ class Ordenador{
 }//Metodo 
 
 
-
-
-
+class OrdenamientoPorSeleccion{
+	
+	public void ordenamientoSeleccion(int [] numeros) {
+		for(int i = 0; i < numeros.length -1; i++) {
+			for(int j = i; j< numeros.length; j++) {
+				if(numeros[i] > numeros[j]) {
+					int minimo = numeros[i];
+					numeros[i] = numeros[j];
+					numeros[j] = minimo;
+					
+				}
+			}
+		}
+	}
+}
 
 
 
