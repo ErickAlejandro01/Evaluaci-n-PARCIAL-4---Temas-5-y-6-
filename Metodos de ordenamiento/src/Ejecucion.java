@@ -63,7 +63,29 @@ class PruebaQuicksort{
 		}
 	}
 
-
+	class Shellsort{
+		public void ordenar(int [] numeros) {
+			int intervalo = numeros.length/2;
+			
+			while(intervalo >0) {
+				for(int i= intervalo;i<numeros.length; i++) {
+					int j = i-intervalo;
+					while(i>=0) {
+						int k = j+intervalo;
+						if(numeros[j]<= numeros[k]) {
+							j=-1;
+						}else {
+							int aux = numeros[j];
+							numeros[j] = numeros[k];
+							numeros[k] = aux;
+							j-= intervalo;
+						}
+					}
+				}
+				intervalo = intervalo/2;
+			}
+		}
+	}//class
 
 
 
