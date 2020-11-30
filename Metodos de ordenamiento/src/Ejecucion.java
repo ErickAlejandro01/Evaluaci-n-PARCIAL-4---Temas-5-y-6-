@@ -1,16 +1,20 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 class Ordenador{
 	
 	public void ordenadorInsercion(int[] numeros) {
-		
+		long TInicio, TFin, tiempo;        
+		 TInicio = System.currentTimeMillis();
 		int aux;
 		for(int i = 0; i < numeros.length; i++) {
 			aux=numeros[i];
 			for(int j=i-1; j > 0 && numeros[j] > aux ; j--) {
 				numeros[j+1] = numeros [j];
 				numeros[j] = aux;
-				
+				 TFin = System.currentTimeMillis();
+				  tiempo = TFin - TInicio;
+				  System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
 				
 			}
 			
@@ -24,13 +28,17 @@ class Ordenador{
 class OrdenamientoPorSeleccion{
 	
 	public void ordenamientoSeleccion(int [] numeros) {
+		long TInicio, TFin, tiempo;        
+		 TInicio = System.currentTimeMillis();
 		for(int i = 0; i < numeros.length -1; i++) {
 			for(int j = i; j< numeros.length; j++) {
 				if(numeros[i] > numeros[j]) {
 					int minimo = numeros[i];
 					numeros[i] = numeros[j];
 					numeros[j] = minimo;
-					
+					TFin = System.currentTimeMillis();
+					  tiempo = TFin - TInicio;
+					  System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
 				}
 			}
 		}
@@ -38,6 +46,8 @@ class OrdenamientoPorSeleccion{
 }
 class PruebaQuicksort{
 	int [] quicksort(int[ ] array, int izq, int der) {
+		long TInicio, TFin, tiempo;        
+		 TInicio = System.currentTimeMillis();
 		int pivote = array[izq];
 		int i = izq, j = der;
 		int aux;
@@ -48,6 +58,9 @@ class PruebaQuicksort{
 				aux = array[i];
 				array[i] = array[j];
 				array[j] = aux;
+				TFin = System.currentTimeMillis();
+				  tiempo = TFin - TInicio;
+				  System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
 			}
 	
 
@@ -61,10 +74,13 @@ class PruebaQuicksort{
 		
 
 		}
+		return array;
 	}
 
 	class Shellsort{
 		public void ordenar(int [] numeros) {
+			long TInicio, TFin, tiempo;        
+			 TInicio = System.currentTimeMillis();
 			int intervalo = numeros.length/2;
 			
 			while(intervalo >0) {
@@ -84,11 +100,16 @@ class PruebaQuicksort{
 				}
 				intervalo = intervalo/2;
 			}
+			TFin = System.currentTimeMillis();
+			  tiempo = TFin - TInicio;
+			  System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
 		}
 	}//class
 
 	class Radix{
 		public void orden(int [] numeros) {
+			long TInicio, TFin, tiempo;        
+			 TInicio = System.currentTimeMillis();
 			if(numeros.length == 0)
 				return;
 			int [] [] np = new int [numeros.length][2];
@@ -105,7 +126,7 @@ class PruebaQuicksort{
 						j = ((0xFF<<(k<<3))&numeros[i])>>(k<<3);
 						if(q[j] ==-1);
 						l = q[j] =f;
-						else {
+						 {
 							l=q[j];
 							while(np[l][1] != -1)
 								l = np[l][1];
@@ -120,17 +141,103 @@ class PruebaQuicksort{
 						for(l=q[i];l!=-1;l=np[l][1])
 							numeros[j++] = np[l] [0];
 				}
-			
+			TFin = System.currentTimeMillis();
+			  tiempo = TFin - TInicio;
+			  System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
 			}
 	}
 
-
-
+	public class Burbuja {
+		
+		private void burbuja(int[] arreglo) {
+			long TInicio, TFin, tiempo;        
+			 TInicio = System.currentTimeMillis();
+		    for (int x = 0; x < arreglo.length; x++) {		       
+		        for (int y = 0; y < arreglo.length - 1; y++) {
+		            int elementoActual = arreglo[y],
+		                    elementoSiguiente = arreglo[y + 1];
+		            if (elementoActual > elementoSiguiente) {		               
+		                arreglo[y] = elementoSiguiente;
+		                arreglo[y + 1] = elementoActual;
+		            }
+		        }
+		    }
+		    TFin = System.currentTimeMillis();
+		    tiempo = TFin - TInicio;
+		    System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
+		}
+	}
+	class Burbuja02{
+		private void burbuja(String[] arreglo) {
+		    for (int x = 0; x < arreglo.length; x++) {	
+		    	long TInicio, TFin, tiempo;        
+				 TInicio = System.currentTimeMillis();
+		        for (int y = 0; y < arreglo.length - 1; y++) {
+		            String elementoActual = arreglo[y],
+		                    elementoSiguiente = arreglo[y + 1];
+		            if (elementoActual.compareTo(elementoSiguiente) > 0) {
+		                arreglo[y] = elementoSiguiente;
+		                arreglo[y + 1] = elementoActual;
+		            }
+		        }
+		        TFin = System.currentTimeMillis();
+		        tiempo = TFin - TInicio;
+		        System.out.println("Tiempo de ejecución en milisegundos: " + tiempo);
+		    }
+		}
+	}
 public class Ejecucion {
-
-	public static void main(String[] args) {
+	public void main(String[] args) {
+		Scanner sn = new Scanner(System.in);
+	       boolean salir = false;
+	       int opcion; 
+	       while(!salir){
+	           System.out.println("1. Opcion 1: Ordenamiento por incercion");
+	           System.out.println("2. Opcion 2: Ordenamiento por seleccion");
+	           System.out.println("3. Opcion 3: Ordenamiento Por Quicksort");
+	           System.out.println("4. Opcion 4: Ordenamiento Por Sellsort");
+	           System.out.println("5. Opcion 5: Ordenamiento Por Radix");
+	           System.out.println("6. Opcion 6: Ordenamineto Por Burbuja01");
+	           System.out.println("7. Opcion 7: Ordenamiento Por Burbuja02");
+	           System.out.println("8. Salir");
+	           System.out.println("Escribe una de las opciones");
+	           opcion = sn.nextInt();
+	           switch(opcion){
+	               case 1:
+	                   System.out.println("Has seleccionado la opcion 1");	                 
+	                   break;
+	               case 2:
+	                   System.out.println("Has seleccionado la opcion 2");
+	                   break;
+	                case 3:
+	                   System.out.println("Has seleccionado la opcion 3");
+	                   break;
+	                case 4:
+		                   System.out.println("Has seleccionado la opcion 4");
+		                   break;
+	                case 5:
+		                   System.out.println("Has seleccionado la opcion 5");
+		                   break;
+	                case 6:
+		                   System.out.println("Has seleccionado la opcion 6");
+		                   break;
+	                case 7:
+		                   System.out.println("Has seleccionado la opcion 7");
+		                   break;
+	                case 8:
+	                   salir=true;
+	                   break;
+	                default:
+	                   System.out.println("Solo números entre 1 y 8");
+	           }
+	       }
+	    }
+	}
+		
+		
 		
 
-	}
+	
 
 }
+
